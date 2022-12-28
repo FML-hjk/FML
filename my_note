@@ -1,0 +1,103 @@
+-turtlebot autoboot error-
+1) setenv bootdelay -2
+2) saveenv
+
+
+-turtlebot bringup error-
+1) gazebo 가 원인 roscore 재실행
+
+-raspi-config install(might not work on ubuntu 18.04)-
+1) wget https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20200601_all.deb -P /tmp 
+//raspi-config_20200601_all.deb 이부분을 최신으로 바꾸는게 권장됨
+2) sudo apt-get install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils -y
+3) sudo apt-get install -fy
+4) sudo dpkg -i /tmp/raspi-config_20200601_all.deb
+
+-raspi-config camera start_x.elf error-
+1) sudo apt-get update
+2) sudo apt-get upgrade -y
+3) sudo apt-get install git-core -y
+4) sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update
+5) sudo chmod +x /usr/bin/rpi-update
+6) sudo rpi-update
+
+-google chrome install-
+1) wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+2) sudo apt install ./google-chrome-stable_current_amd64.deb
+
+-could not get lock error-
+1) sudo rm /var/lib/apt/lists/lock
+2) sudo rm /var/cache/apt/archives/lock
+3) sudo rm /var/lib/dpkg/lock*
+4) sudo dpkg --configure -a
+
+-terminator install-
+1) sudo apt install terminator
+
+-ros bridge install-
+1) sudo apt-get install ros-melodic-rosbridge-server
+2) roslaunch rosbridge_server rosbridge_websocket.launch
+
+-running .exe format file in ubuntu-
+https://wiki.winehq.org/Download
+
+-ubuntu hangul한글 setting-
+https://pstudio411.tistory.com/entry/Ubuntu-2004-%ED%95%9C%EA%B8%80-%EC%9E%85%EB%A0%A5-%EB%B0%A9%EB%B2%95
+
+이메일
+wsung1@gmail.com 성우석 교수님
+yonghalee08@gmail.com 용하
+msmw1023@chosun.kr 민수
+xovndwns@naver.com 혜준형
+rlawogus5280@naver.com 재현 
+
+
+rsa =
+pvd =
+
+ECU(electronic control unit) = 엔진 자동변속기 abs등 의 상태를 컴퓨터로 제어하는 전자제어장치 
+
+CAN(Control Arear Network) = 모듈간 통신을 하나의 인터페이스로 제어할수있는 네트워크 
+
+kalman filter = 노이즈가 발생하고 추정치가 있을때 원하는 변수를 최적의 방법으로 측정할수있는 추정 알고리즘 
+
+ekf(extended kalman filter) = kalman filter는 추정치가 선형일때 적용되지만 ekf는 추정치가 비선형일때 
+
+out sourcing = 기업 업무의 일부 프로세스를 경영 효과 및 효율의 극대화를 위한 방안으로 제3자에게 위탁해 처리하는 것을 말한다
+
+ICP(Iterative Closest Point) = 한 대상물에 대해 다른 지점에서 스캔된 두개의 포인트 클라우드가 있을 경우, 이 두개의 데이터를 퍼즐처럼 합쳐, 정합(registration)하는 알고리즘이다
+
+의사코드(pseudo code) = 모듈이 작동하는 논리를 표현한 언어 
+
+MIL(model in the loop) = 제어기를 컴퓨터 시뮬레이션 모델로 구현하여 알고리즘을 검증
+
+SIL(software in the loop) = 실제 자동차 제어기(ecu)에 담길수있는 의사코드에 대하여 검증  
+
+HIL(hardware in the loop) = 실제 ECU의 설계와 동작특성에 대한 검증
+
+VIL(vehicle in the loop) = 가상환경과 실제차량의 융합으로 실차검증과 동일한 수준의 검증 
+-VIL 을 사용하는 이유 = 비용적인 문제와 높은 위험성을 줄이기위함 
+가상주행환경모듈 = 차량 보행자 차선 도로설치물 차선 등의 정보를 포함하는 모듈   
+
+동기화모듈 = 가상환경의 객체와 시험차량을 동기화하는 모듈(GPS/INS사용) 동기화의 목적이 자세와 위치를 받기 위함?? 시뮬레이션에서의 위치가 곧 자차의 위치가된다? 이게 맞다면 저번에했던 gnss_pose를 통한 벡터맵제작이 가능해진다? 
+ 
+센서에뮬레이션모듈 = 가상주행환경의 정보를 ADAS제어기에 전달하는 모듈 
+-라이다를 사용할경우 라이다센서에뮬레이터 카메라를 사용할경우 비전센서에뮬레이터.
+
+운전자시각제공모듈 = 운전자에게 시각적으로 주행환경을 제공하는 모듈
+
+PID제어 
+-P(proportinal 비례항) = 현재상태와 오차값의 크기에 비례한 제어작용
+-I(integral 적분항) = 정상상태오차를 없애는 제어작용
+-D(derivative 미분항) = 급격한 변화에대한 제동을 걸어 오버슛을 줄이고 안정성을 향상시키는 제어작용
+
+npc
+RCP 
+freemode 
+absolute mode? 차이? 
+DIN
+SAE
+adma
+roadbox
+pure pursuit
+MPC 
